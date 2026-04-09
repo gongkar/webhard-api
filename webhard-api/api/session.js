@@ -3,9 +3,8 @@ const { google } = require('googleapis');
 const FOLDER_ID = '1WQpphfgBjBpjgZY5Yfq-gqdJfxta4Sue';
 
 async function getAccessToken() {
-  const raw = process.env.GOOGLE_SERVICE_ACCOUNT;
-const credentials = JSON.parse(raw);
-credentials.private_key = credentials.private_key.replace(/\\n/g, '\n');
+  const credentials = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
+  credentials.private_key = credentials.private_key.replace(/\\n/g, '\n');
   const auth = new google.auth.GoogleAuth({
     credentials,
     scopes: ['https://www.googleapis.com/auth/drive'],
